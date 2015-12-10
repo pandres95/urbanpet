@@ -6,10 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>UrbanPet</title>
 
-    
-    
+    <!-- build:css /styles/style.min.css -->
 
-    <script src="/js/app.min.js"></script>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="lib/angular-material/angular-material.css" />
+    <!-- endbower -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- endbuild -->
+    <!-- build:js /js/vendor.min.js -->
+    <!-- bower:js -->
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-aria/angular-aria.js"></script>
+    <script src="lib/angular-material/angular-material.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- endbower -->
+
+    <!-- endbuild -->
+
+    <!-- build:js /js/app.min.js -->
+
+    <!-- inject:js -->
+    <script src="/js/app.js"></script>
+    <script src="/js/configuration/api.js"></script>
+    <script src="/js/configuration/constants.js"></script>
+    <script src="/js/user/module.js"></script>
+    <script src="/js/views/templates.js"></script>
+    <script src="/js/user/controllers/addstore.controller.js"></script>
+    <script src="/js/user/controllers/editstore.controller.js"></script>
+    <script src="/js/user/controllers/store.controller.js"></script>
+    <script src="/js/user/services/store.service.js"></script>
+    <!-- endinject -->
+
+    <!-- endbuild -->
 
 </head>
 <body ui-view>
