@@ -2,7 +2,9 @@
     'use strict';
 
     (angular
-        .module('urbanPet', [ 'ui.router', 'ngMaterial', 'urbanPet.user' ])
+        .module('urbanPet', [
+            'ui.router', 'ngMaterial', 'urbanPet.user', 'urbanPet.store'
+        ])
         .config(Config)
         .run(Run)
     );

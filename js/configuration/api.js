@@ -22,8 +22,11 @@
 
         id: apiRouter.id,
         // Store
-        store: apiRouter.route('store'),
-        storeId: apiRouter.id('store')
+        store: apiRouter.route('stores'),
+        storeId: apiRouter.id('stores'),
+        // Category
+        category: apiRouter.route('categories'),
+        categoryId: apiRouter.id('categories')
     };
 
     (angular
