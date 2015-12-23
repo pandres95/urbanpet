@@ -22,8 +22,8 @@
 
         id: apiRouter.id,
         // Store
-        store: apiRouter.route('stores'),
-        storeId: apiRouter.id('stores'),
+        store: apiRouter.route('venues'),
+        storeId: apiRouter.id('venues'),
         // Category
         category: apiRouter.route('categories'),
         categoryId: apiRouter.id('categories')

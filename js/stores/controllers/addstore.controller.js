@@ -64,6 +64,7 @@
                 type: 'Point',
                 coordinates: [ 0, 0 ]
             },
+            isStore: false,
             categories: []
         };
     }

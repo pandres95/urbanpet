@@ -3,7 +3,8 @@
 
     (angular
         .module('urbanPet', [
-            'ui.router', 'ngMaterial', 'urbanPet.user', 'urbanPet.store'
+            'ui.router', 'ngMaterial',
+            'urbanPet.store', 'urbanPet.category'
         ])
         .config(Config)
         .run(Run)
@@ -16,12 +17,6 @@
             .primaryPalette('orange')
             .accentPalette('red')
         );
-
-        $stateProvider.state('home', {
-            url: '',
-            controller: 'StoreController as vm',
-            templateUrl: 'views/store.tpl.html'
-        });
 
     }
 

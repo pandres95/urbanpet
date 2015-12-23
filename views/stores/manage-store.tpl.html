@@ -1,0 +1,66 @@
+<md-dialog ng-cloak style="max-width:800px; max-height:810px; width:85%;">
+    <form name="manageStoreForm" ng-submit="manageStore(store)">
+        <md-toolbar>
+            <div ng-switch on="edit" class="md-toolbar-tools">
+                <h2 ng-switch-when="true">Editar tienda: {{store.name}}</h2>
+                <h2 ng-switch-when="false">Agregar nueva tienda</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="img/icons/close.svg" aria-label="Cerrar diálogo"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+
+                <md-input-container>
+                    <label>Nombre</label>
+                    <input ng-model="store.name">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Descripción</label>
+                    <textarea ng-model="store.description" columns="1" md-maxlength="150" rows="5"></textarea>
+                </md-input-container>
+
+                <md-input-container>
+                    <md-switch ng-model="store.isStore">
+                        Es una tienda
+                    </md-switch>
+                </md-input-container>
+
+                <md-input-container layout="row">
+                    <md-input-container flex>
+                        <label>Latitud</label>
+                        <input ng-model="store.location.coordinates[1]">
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label>Longitud</label>
+                        <input ng-model="store.location.coordinates[0]">
+                    </md-input-container>
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Categorías</label>
+                    <md-chips ng-model="store.categories" placeholder="Agregar nueva categoría" delete-button-label="Eliminar categoría" delete-hint="Presione eliminar para remover categoría" secondary-placeholder="+" md-require-match="true" md-autocomplete-snap>
+                        <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="item in querySearch(searchText)" md-item-text="item.name">
+                            <span md-highlight-text="searchText">
+                                {{item.name}}
+                            </span>
+                        </md-autocomplete>
+                        <md-chip-template>
+                            <span>
+                                <strong>{{$chip.name}}</strong>
+                            </span>
+                        </md-chip-template>
+                    </md-chips>
+                </md-input-container>
+
+                <center>
+                    <md-button class="md-fab md-secondary">
+                        <md-icon md-svg-src="img/icons/send.svg" aria-label="send"></md-icon>
+                    </md-button>
+                </center>
+            </div>
+        </md-dialog-content>
+    </form>
+</md-dialog>

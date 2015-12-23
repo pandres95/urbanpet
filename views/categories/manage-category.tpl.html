@@ -1,0 +1,33 @@
+<md-dialog ng-cloak style="max-width:800px; max-height:810px; width:85%;">
+    <form name="manageCategoryForm" ng-submit="manageCategory(category)">
+        <md-toolbar>
+            <div ng-switch on="edit" class="md-toolbar-tools">
+                <h2 ng-switch-when="true">Editar categoría: {{category.name}}</h2>
+                <h2 ng-switch-when="false">Agregar nueva categoría</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="img/icons/close.svg" aria-label="Cerrar diálogo"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+
+                <md-input-container>
+                    <label>Identificador</label>
+                    <input ng-disabled="edit" ng-model="category._id">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Nombre</label>
+                    <textarea ng-model="category.name"></textarea>
+                </md-input-container>
+
+                <center>
+                    <md-button class="md-fab md-secondary">
+                        <md-icon md-svg-src="img/icons/send.svg" aria-label="send"></md-icon>
+                    </md-button>
+                </center>
+            </div>
+        </md-dialog-content>
+    </form>
+</md-dialog>

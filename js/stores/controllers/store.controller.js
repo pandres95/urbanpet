@@ -12,7 +12,7 @@
         construct();
 
         function construct() {
-            Store.list().then(function(data){ vm.stores = data.reverse(); });
+            Store.list().then((data) => { vm.stores = data.reverse(); });
         }
 
         function getCategories() {
@@ -24,11 +24,11 @@
             });
         }
 
-        vm.addNote = function($event) {
+        vm.addStore = function($event) {
             return getCategories().then(function (categories) {
                 $mdDialog.show({
                     controller: 'AddStoreController',
-                    templateUrl: 'views/manage-store.tpl.html',
+                    templateUrl: 'views/stores/manage-store.tpl.html',
                     locals: {
                         categories: categories
                     },
@@ -48,7 +48,7 @@
             return getCategories().then(function (categories) {
                 $mdDialog.show({
                     controller: 'EditStoreController',
-                    templateUrl: 'views/manage-store.tpl.html',
+                    templateUrl: 'views/stores/manage-store.tpl.html',
                     parent: angular.element(document.body),
                     locals: {
                         categories: categories,

@@ -7,7 +7,9 @@
         .run(Run)
     );
 
-    function Config() {
+    function Config($stateProvider) {
+
+        
 
     }
 
