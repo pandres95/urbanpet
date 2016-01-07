@@ -41,7 +41,7 @@
 
                 <md-input-container>
                     <label>Categorías</label>
-                    <md-chips ng-model="store.categories" placeholder="Agregar nueva categoría" delete-button-label="Eliminar categoría" delete-hint="Presione eliminar para remover categoría" secondary-placeholder="+" md-require-match="true" md-autocomplete-snap>
+                    <md-chips ng-model="store.categories" md-transform-chip="transformChip($chip)" placeholder="Agregar nueva categoría" delete-button-label="Eliminar categoría" delete-hint="Presione eliminar para remover categoría" secondary-placeholder="+" md-require-match="true" md-autocomplete-snap>
                         <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="item in querySearch(searchText)" md-item-text="item.name">
                             <span md-highlight-text="searchText">
                                 {{item.name}}
@@ -56,7 +56,7 @@
                 </md-input-container>
 
                 <center>
-                    <md-button class="md-fab md-secondary">
+                    <md-button type="submit" class="md-fab md-secondary">
                         <md-icon md-svg-src="img/icons/send.svg" aria-label="send"></md-icon>
                     </md-button>
                 </center>

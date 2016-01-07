@@ -6,7 +6,7 @@
         .controller('CategoryController', CategoryController)
     );
 
-    function CategoryController(Category, $log, $mdBottomSheet, $mdDialog) {
+    function CategoryController($rootScope, $mdDialog, Category) {
         var vm = this;
 
         function construct() {
@@ -48,6 +48,7 @@
 
         construct();
 
+        $rootScope.title = 'Categorias';
     }
 
 })();

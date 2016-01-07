@@ -1,24 +1,17 @@
-<md-toolbar>
-    <div class="md-toolbar-tools">
-        <h2><span>UrbanPet</span></h2>
-    </div>
-</md-toolbar>
-<md-content>
-    <md-card ng-repeat="item in vm.stores">
-        <md-card-content>
-            <h2 class="md-title">{{item.name}}</h2>
-            <p>{{item.description}}</p>
-        </md-card-content>
-        <md-card-actions layout="row" layout-align="end center">
-            <md-button ng-click="vm.editStore($event, item)" target="_blank" aria-label="link">
-                <md-icon md-svg-icon="/img/icons/edit.svg"></md-icon>
-            </md-button>
-            <md-button ng-click="vm.removeStore($event, item._id)" target="_blank" aria-label="link">
-                <md-icon md-svg-icon="/img/icons/trash.svg"></md-icon>
-            </md-button>
-        </md-card-actions>
-    </md-card>
-</md-content>
+<md-card ng-repeat="item in vm.stores">
+    <md-card-content>
+        <h2 class="md-title">{{item.name}}</h2>
+        <p>{{item.description}}</p>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-click="vm.editStore($event, item)" target="_blank" aria-label="link">
+            <md-icon md-svg-icon="/img/icons/edit.svg"></md-icon>
+        </md-button>
+        <md-button ng-click="vm.removeStore($event, item._id)" target="_blank" aria-label="link">
+            <md-icon md-svg-icon="/img/icons/trash.svg"></md-icon>
+        </md-button>
+    </md-card-actions>
+</md-card>
 <md-button class="md-fab md-warn" aria-label="Add" style="position: fixed; bottom: 8px; right: 10px;" ng-click="vm.addStore($event)">
     <md-icon md-svg-src="img/icons/plus.svg"></md-icon>
 </md-button>

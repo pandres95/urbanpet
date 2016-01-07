@@ -1,0 +1,73 @@
+<md-card ng-repeat="order in vm.orders">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">
+                Orden del {{order.creationDate | date : 'medium'}}
+            </span>
+            <span class="md-subhead">
+                Hecha por: {{order.user.name.first}} {{order.user.name.last}}
+            </span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button class="md-icon-button" ng-click="vm.progress($event, order._id)" aria-label="Progress" ng-disabled="order.orderStatus !== 'incoming'">
+            <md-icon md-svg-icon="/img/icons/autorenew.svg"></md-icon>
+        </md-button>
+        <md-button class="md-icon-button" ng-click="vm.deliver($event, order._id)" aria-label="Deliver" ng-disabled="order.orderStatus === 'delivered'">
+            <md-icon md-svg-icon="/img/icons/check.svg"></md-icon>
+        </md-button>
+    </md-card-actions>
+    <md-card-content>
+        <div>
+            <span class="md-body-2">Dirección</span>
+            <span class="md-caption">{{order.address}}</span>
+        </div>
+
+        <div>
+            <span class="md-body-2">Cantidad de cambio</span>
+            <span class="md-caption">
+                {{order.currencyAmount | currency}}
+            </span>
+        </div>
+
+        <div>
+            <span class="md-body-2">Estado de la orden</span>
+            <span class="md-caption" ng-switch="order.orderStatus">
+                <span ng-switch-when="incoming">Entrante</span>
+                <span ng-switch-when="in-progress">En progreso</span>
+                <span ng-switch-when="delivered">Entregada</span>
+            </span>
+        </div>
+
+        <div>
+            <span class="md-body-2">Tipo de pago</span>
+            <span class="md-caption" ng-switch="order.paymentMethod">
+                <span ng-switch-when="cash">Efectivo</span>
+                <span ng-switch-when="card">Tarjeta debito/credito</span>
+            </span>
+        </div>
+
+        <div>
+            <span class="md-caption">{{order.comments}}</span>
+        </div>
+
+        <md-list ng-repeat="detail in order.orderDetail">
+            <md-list-item class="md-3-line">
+                <div class="md-list-item-text" layout="column">
+                    <h3>{{detail.quantity}} {{detail.product.name}}</3>
+                    <h4>
+                        {{detail.product.unitPrice * detail.quantity | currency}}
+                    </h4>
+                    <p ng-repeat="(key, dt) in detail.details[0]">
+                        <span class="md-body-2">{{key}}:</span>
+                        <span class="md-caption">{{dt}}</span>
+                    </p>
+                </div>
+            </md-list-item>
+            <md-divider />
+        </md-list>
+    </md-card-content>
+</md-card>
+<md-button class="md-fab md-warn" aria-label="Add" style="position: fixed; bottom: 8px; right: 10px;" ng-click="vm.addAd($event)">
+    <md-icon md-svg-src="img/icons/plus.svg"></md-icon>
+</md-button>

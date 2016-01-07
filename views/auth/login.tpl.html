@@ -1,0 +1,32 @@
+<div layout="row" layout-align="center center" class="spacer">
+    <div flex="30">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1 class="md-toolbar-tools">Iniciar Sesión</h1>
+            </div>
+        </md-toolbar>
+        <md-content class="md-padding md-whiteframe-z3">
+            <form name="loginForm" ng-submit="vm.login(user)">
+                <md-input-container>
+                    <label>Usuario</label>
+                    <input type="email" name="username" ng-model="user.mail" required>
+                    <div ng-if="loginForm.username.$dirty" ng-messages="loginForm.username.$error">
+                        <div ng-message="required" ng-if="loginForm.username.$error.required">Campo obligatorio</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>Contraseña</label>
+                    <input type="password" name="password" ng-model="user.password" required>
+                    <div ng-if="loginForm.password.$dirty" ng-messages="loginForm.password.$error">
+                        <div ng-message="required" ng-if="loginForm.password.$error.required">Campo obligatorio</div>
+                    </div>
+                </md-input-container>
+
+                <div layout="row" layout-align="center">
+                    <md-button type="submit" ng-disabled="addEventForm.$invalid" class="md-raised md-primary">Iniciar Sesión </md-button>
+                </div>
+            </form>
+
+        </md-content>
+    </div>
+</div>

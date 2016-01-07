@@ -1,0 +1,29 @@
+<md-content layout="column" layout-wrap>
+    <md-card ng-repeat="item in vm.posts" flex>
+
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">{{item.title}}</span>
+            <span class="md-subhead">{{item.postStatus}}</span>
+            <span class="md-subhead">{{item.description}}</span>
+            <span class="md-subhead" btf-markdown="item.content"></span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-sm card-media">
+                <img ng-src="{{item.image | image}}" class="md-card-image" alt="{{item.name}}">
+            </div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-icon-button" ng-click="vm.editPost($event, item)" aria-label="Edit">
+                <md-icon md-svg-icon="/img/icons/edit.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-click="vm.removePost($event, item._id)" aria-label="Delete">
+                <md-icon md-svg-icon="/img/icons/trash.svg"></md-icon>
+            </md-button>
+        </md-card-actions>
+    </md-card>
+</md-content>
+<md-button class="md-fab md-warn" aria-label="Postd" style="position: fixed; bottom: 8px; right: 10px;" ng-click="vm.addPost($event)">
+    <md-icon md-svg-src="img/icons/plus.svg"></md-icon>
+</md-button>

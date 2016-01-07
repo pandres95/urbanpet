@@ -1,0 +1,47 @@
+<md-dialog ng-cloak style="max-width:800px; width:85%;">
+    <md-toolbar>
+        <div ng-switch on="edit" class="md-toolbar-tools">
+            <h2 ng-switch-when="true">Editar publicacion: {{name}}</h2>
+            <h2 ng-switch-when="false">Agregar nueva publicacion</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-svg-src="img/icons/close.svg" aria-label="Cerrar diálogo"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <form name="managePostForm" ng-submit="managePost(post)">
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <md-input-container class="md-block">
+                    <label>Título</label>
+                    <input ng-model="post.title">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Descripción</label>
+                    <input ng-model="post.description">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Estado</label>
+                    <md-select ng-model="post.postStatus">
+                        <md-option ng-repeat="state in states" value="{{state.id}}">
+                            {{state.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Contenido</label>
+                    <textarea ng-model="post.content" rows="8" cols="40" column></textarea>
+                </md-input-container>
+                <h4>Previsualización</h4>
+                <div btf-markdown="post.content" class="md-block">
+                </div>
+
+                <center>
+                    <md-button type="submit" class="md-fab md-secondary">
+                        <md-icon md-svg-src="img/icons/send.svg" aria-label="send"></md-icon>
+                    </md-button>
+                </center>
+            </div>
+        </md-dialog-content>
+    </form>
+</md-dialog>

@@ -7,13 +7,20 @@
     );
 
     function EditStoreController(
-        $scope, $mdDialog, $mdToast, Store, categories, storeId
+        _, $log, $scope, $mdDialog, $mdToast, Store, categories, storeId
     ) {
         var vmd = this;
 
         $scope.selectedItem = null;
         $scope.searchText = null;
         $scope.categories = categories;
+
+        $scope.transformChip = function(chip) {
+            if(angular.isObject(chip)){
+                return chip;
+            }
+            return _($scope.categories).findWhere({ _id: chip });
+        };
 
         $scope.querySearch = function (query) {
             var results = (query ?
@@ -65,6 +72,9 @@
 
         function construct(){
             Store.find(storeId).then(function (store) {
+                store.categories = _(store.categories).map(
+                    $scope.transformChip
+                );
                 $scope.store = store;
             });
         }

@@ -1,0 +1,22 @@
+{
+  "name": "ngUnderscore",
+  "version": "0.1.1",
+  "authors": [
+    "Sebastian Osorio <svzosorio@boolinc.co>"
+  ],
+  "description": "underscore factory for angularjs",
+  "main": "ng-underscore.js",
+  "keywords": [
+    "underscore",
+    "ngUnderscore",
+    "angular"
+  ],
+  "ignore": [
+      "/bower_components"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "underscore": "~1.8.3",
+    "angular": "~1.x.x"
+  }
+}

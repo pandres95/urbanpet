@@ -1,18 +1,35 @@
 <section layout="row" flex>
     <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
-        <md-toolbar class="md-theme-indigo">
-            <h1 class="md-toolbar-tools">Menu</h1>
+        <md-toolbar>
+            <h1 class="md-toolbar-tools">UrbanPet</h1>
         </md-toolbar>
-        <md-content layout="column" flex>
-            <md-button class="md-primary" ui-sref="user.stores">
-                Tiendas
+        <md-content md-scroll-y layout="column" flex>
+            <md-button class="md-primary" ui-sref="user.ads">
+                Anuncios
             </md-button>
             <md-button class="md-primary" ui-sref="user.categories">
                 Categorías
             </md-button>
+            <md-button class="md-primary" ui-sref="user.orders">
+                Ordenes
+            </md-button>
+            <md-button class="md-primary" ui-sref="user.stores">
+                Lugares
+            </md-button>
+            <md-button class="md-primary" ui-sref="user.posts">
+                Publicaciones
+            </md-button>
+            <md-button class="md-primary" ui-sref="auth.logout">
+                Cerrar Sesion
+            </md-button>
         </md-content>
     </md-sidenav>
-    <div ui-view style="width: 100%;">
+    <section layout="column" flex>
+        <md-toolbar class="md-whiteframe-glow-z1">
+            <h1 class="md-toolbar-tools">{{title}}</h1>
+        </md-toolbar>
+        <md-content flex ui-view md-scroll-y ng-view>
 
-    </div>
+        </md-content>
+    </section>
 </section>

@@ -7,13 +7,22 @@
     );
 
     function AddStoreController(
-        $scope, $mdDialog, $mdToast, Store, categories
+        _, $log, $scope, $mdDialog, $mdToast, Store, categories
     ) {
         var vmd = this;
 
         $scope.selectedItem = null;
         $scope.searchText = null;
         $scope.categories = categories;
+
+        $scope.transformChip = function(chip) {
+            $log.log(chip, angular.isObject(chip));
+            if(angular.isObject(chip)){
+                return chip;
+            }
+            $log.log(_($scope.categories).findWhere({ _id: chip }));
+            return _($scope.categories).findWhere({ _id: chip });
+        };
 
         $scope.querySearch = function (query) {
             var results = (query ?

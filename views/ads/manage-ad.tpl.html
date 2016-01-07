@@ -1,0 +1,61 @@
+<md-dialog ng-cloak style="max-width:800px; max-height:810px; width:85%;">
+    <md-toolbar>
+        <div ng-switch on="edit" class="md-toolbar-tools">
+            <h2 ng-switch-when="true">Editar anuncio: {{name}}</h2>
+            <h2 ng-switch-when="false">Agregar nuevo anuncio</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-svg-src="img/icons/close.svg" aria-label="Cerrar diálogo"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <form name="manageAdForm" ng-submit="manageAd()">
+        <md-dialog-content>
+            <div layout="row" class="md-dialog-content" flex>
+                <div flex class="md-layout-row layout-margin">
+                    <md-input-container flex>
+                        <label>Nombre</label>
+                        <input flex="100" ng-model="name">
+                    </md-input-container>
+                    <div layout="row">
+                        <md-input-container>
+                            <label>Protocolo</label>
+                            <md-select ng-model="url.protocol">
+                                <md-option value="http">
+                                    http://
+                                </md-option>
+                                <md-option value="https">
+                                    https://
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container flex>
+                            <label>Dirección</label>
+                            <input placeholder="www.example.com" ng-model="url.path">
+                            </textarea>
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <div layout="column" flex="30">
+                    <md-input-container ng-switch="file" flex>
+                        <img ng-switch-default style="width: 100%; height: auto;" ngf-thumbnail="file" ngf-drop ngf-multiple="false" ngf-pattern="'image/*'" ng-model="file">
+                        <img ng-switch-when="false" style="width: 100%; height: auto;" ngf-drop ngf-multiple="false" ng-src="{{image | image}}" ng-model="file" ngf-pattern="'image/*'" >
+                    </md-input-container>
+                    <md-input-container layout-align="center center">
+                        <md-button ngf-drop name="file" ngf-select ng-model="file" ngf-multiple="false"  ngf-pattern="'image/*'" class="md-fab">
+                            <md-icon md-svg-src="img/icons/image.svg" aria-label="send"></md-icon>
+                        </md-button>
+                    </md-input-container>
+                </div>
+
+            </div>
+
+            <center class="md-layout-row layout-margin">
+                <md-button type="submit" class="md-fab">
+                    <md-icon md-svg-src="img/icons/send.svg" aria-label="send"></md-icon>
+                </md-button>
+            </center>
+        </md-dialog-content>
+    </form>
+</md-dialog>

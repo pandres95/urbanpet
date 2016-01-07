@@ -6,7 +6,9 @@
         .controller('StoreController', StoreController)
     );
 
-    function StoreController(Category, Store, $mdBottomSheet, $mdDialog) {
+    function StoreController(
+        $rootScope, $mdBottomSheet, $mdDialog, Category, Store
+    ) {
         var vm = this;
 
         construct();
@@ -68,6 +70,8 @@
         vm.removeStore = function($event, id) {
             Store.delete(id).then(function(){ construct(); });
         };
+
+        $rootScope.title = 'Lugares';
     }
 
 })();
