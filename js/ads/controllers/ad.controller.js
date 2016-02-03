@@ -12,7 +12,7 @@
         construct();
 
         function construct() {
-            Ad.list().then((data) => { vm.ads = data.reverse(); });
+            Ad.list().then(function(data) { vm.ads = data.reverse(); });
         }
 
         vm.addAd = function($event) {

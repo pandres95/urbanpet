@@ -8,12 +8,12 @@
         },
         route: function(path){
             var url = this.url;
-            return `${url.protocol}://${url.host}/${path}`;
+            return '{0}://{1}/{2}'.format(url.procotol, url.host, path);
         },
         id: function(path){
             var prePath = apiRouter.route(path);
             return function (id) {
-                return `${prePath}/${id}`;
+                return '{0}/{1}'.format(prePath, id);
             };
         }
     };

@@ -20,7 +20,7 @@
                     .hideDelay(3000)
                 );
             }
-            Order.list().then((data) => { vm.orders = data.reverse(); });
+            Order.list().then(function(data) { vm.orders = data.reverse(); });
         }
 
         vm.progress = function($event, id) {

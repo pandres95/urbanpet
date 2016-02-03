@@ -14,7 +14,7 @@
         construct();
 
         function construct() {
-            Post.list().then((data) => { vm.posts = data.reverse(); });
+            Post.list().then(function(data) { vm.posts = data.reverse(); });
         }
 
         function getCategories() {

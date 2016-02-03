@@ -29,16 +29,21 @@
             return $q.reject(rejection);
         }
 
-        function response(response) {
+        function response(_response) {
             $injector.get('loadingBar').hide();
 
-            if(!response.config.notNotifySuccess && response.config.method != 'GET'){
-                $injector.get('msg').success(`request.${response.config.method}`);
+            if(
+                !_response.config.notNotifySuccess &&
+                _response.config.method !== 'GET'
+            ){
+                $injector.get('msg').success(
+                    'request.{0}'.format(_response.config.method)
+                );
             }
 
             console.log();
 
-            return response;
+            return _response;
         }
 
         function responseError(rejection) {

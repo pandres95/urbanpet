@@ -14,7 +14,7 @@
         construct();
 
         function construct() {
-            Store.list().then((data) => { vm.stores = data.reverse(); });
+            Store.list().then(function(data) { vm.stores = data.reverse(); });
         }
 
         function getCategories() {

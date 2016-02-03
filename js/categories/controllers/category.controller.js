@@ -10,7 +10,7 @@
         var vm = this;
 
         function construct() {
-            Category.list().then((data) => { vm.categories = data; });
+            Category.list().then(function(data) { vm.categories = data; });
         }
 
         vm.addCategory = function ($event) {
