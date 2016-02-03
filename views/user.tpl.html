@@ -19,7 +19,7 @@
             <md-button class="md-primary" ui-sref="user.posts">
                 Publicaciones
             </md-button>
-            <md-button class="md-primary" ui-sref="auth.logout">
+            <md-button class="md-primary" ui-sref="logout">
                 Cerrar Sesion
             </md-button>
         </md-content>
@@ -28,6 +28,7 @@
         <md-toolbar class="md-whiteframe-glow-z1">
             <h1 class="md-toolbar-tools">{{title}}</h1>
         </md-toolbar>
+        <md-progress-linear md-mode="indeterminate" ng-show="loading"></md-progress-linear>
         <md-content flex ui-view md-scroll-y ng-view>
 
         </md-content>

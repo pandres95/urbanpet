@@ -37,7 +37,10 @@
         orderId: apiRouter.id('orders'),
         // Post
         post: apiRouter.route('posts'),
-        postId: apiRouter.id('posts')
+        postId: apiRouter.id('posts'),
+        // Product
+        product: apiRouter.route('products'),
+        productId: apiRouter.id('products')
     };
 
     (angular

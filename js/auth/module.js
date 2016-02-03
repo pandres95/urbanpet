@@ -19,10 +19,15 @@
             data:{
                 role: 4
             }
+        })
+        .state('logout',{
+            url: '/logout',
+            controller: 'LogoutController'
         });
+
     }
 
-    function run($rootScope, Auth, $state) {
+    function run($rootScope, Auth, $state, loadingBar) {
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams){
             if(!toState.data){
                 toState.data = {role: 8};

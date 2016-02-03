@@ -13,7 +13,9 @@
         .run(Run)
     );
 
-    function Config($stateProvider, $mdThemingProvider) {
+    function Config($stateProvider, $mdThemingProvider, $httpProvider) {
+
+        $httpProvider.interceptors.push('ErrorInterceptor');
 
         ($mdThemingProvider
             .theme('default')
@@ -45,6 +47,11 @@
             url: '/stores',
             controller: 'StoreController as vm',
             templateUrl: 'views/stores/store.tpl.html'
+        })
+        .state('user.products', {
+            url:'/stores/:id/products',
+            controller: 'ProductController as vm',
+            templateUrl: 'views/stores/product.tpl.html'
         })
         .state('user.posts', {
             url: '/posts',
