@@ -13,7 +13,9 @@
         .run(Run)
     );
 
-    function Config($stateProvider, $mdThemingProvider, $httpProvider) {
+    function Config(
+        $stateProvider, $mdThemingProvider, $httpProvider, $mdDateLocaleProvider
+    ) {
 
         $httpProvider.interceptors.push('ErrorInterceptor');
 
@@ -58,6 +60,33 @@
             controller: 'PostController as vm',
             templateUrl: 'views/posts/post.tpl.html'
         });
+
+        // Example of a French localization.
+        $mdDateLocaleProvider.months = [
+            'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio',
+            'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+        ];
+        $mdDateLocaleProvider.shortMonths = [
+            'ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep',
+            'oct', 'nov', 'dic'
+        ];
+        $mdDateLocaleProvider.days = [
+            'domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes',
+            'sábado'
+        ];
+        $mdDateLocaleProvider.shortDays = [
+            'dom', 'lun', 'mar', 'mie', 'jue', 'vie', 'sab'
+        ];
+        // Can change week display to start on Monday.
+        $mdDateLocaleProvider.firstDayOfWeek = 1;
+
+        // In addition to date display, date components also need localized messages
+        // for aria-labels for screen-reader users.
+        $mdDateLocaleProvider.weekNumberFormatter = function(weekNumber) {
+            return 'semana ' + weekNumber;
+        };
+        $mdDateLocaleProvider.msgCalendar = 'Calendario';
+        $mdDateLocaleProvider.msgOpenCalendar = 'Abrir el calendario';
 
     }
 

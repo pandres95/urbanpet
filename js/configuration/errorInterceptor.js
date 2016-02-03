@@ -41,15 +41,13 @@
                 );
             }
 
-            console.log();
-
             return _response;
         }
 
         function responseError(rejection) {
             $injector.get('loadingBar').hide();
 
-            if(!rejection.config.notNotify){
+            if(!(rejection.config && rejection.config.notNotify)){
                 $injector.get('msg').error('request.default');
             }
 

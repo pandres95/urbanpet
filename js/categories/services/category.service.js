@@ -6,12 +6,13 @@
         .service('Category', Category)
     );
 
-    function Category($http, headers, api) {
+    function Category($http, Upload, headers, api) {
 
-        this.list = function () {
+        this.list = function (params) {
             return $http({
                 method: 'GET',
-                url: api.category
+                url: api.category,
+                params: params
             }).then(function (res) {
                 return res.data.data;
             });
@@ -58,6 +59,18 @@
                 url: api.categoryId(id),
                 headers: {
                     'Content-Type': headers.json
+                }
+            }).then(function (res) {
+                return res.data.data;
+            });
+        };
+
+        this.uploadImage = function (id, image) {
+            return Upload.upload({
+                method: 'PUT',
+                url: api.uploadCategory(id),
+                data: {
+                    file: image
                 }
             }).then(function (res) {
                 return res.data.data;

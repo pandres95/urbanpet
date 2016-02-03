@@ -1,7 +1,18 @@
 <md-card ng-repeat="item in vm.categories">
-    <md-card-content>
-        <h2 class="md-title">{{item.name}}</h2>
-    </md-card-content>
+    <md-card-title>
+        <md-card-title-text>
+            <h2 class="md-title">{{item.name}}</h2>
+            <span ng-switch="item.isProduct">
+                <span ng-switch-when="false" class="md-subhead">Lugar</span>
+                <span ng-switch-when="true" class="md-subhead">Producto</span>
+            </span>
+        </md-card-title-text>
+        <md-card-title-media>
+          <div ng-if="item.image" class="md-media-sm card-media">
+              <img ng-src="{{item.image | image}}" class="md-card-image" alt="{{item.name}}">
+          </div>
+        </md-card-title-media>
+    </md-card-title>
     <md-card-actions layout="row" layout-align="end center">
         <md-button ng-click="vm.editCategory($event, item)" target="_blank" aria-label="link">
             <md-icon md-svg-icon="/img/icons/edit.svg"></md-icon>

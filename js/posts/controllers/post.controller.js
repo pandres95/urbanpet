@@ -11,10 +11,30 @@
     ) {
         var vm = this;
 
+        $rootScope.offset = 0;
+
+        $rootScope.goBack = function () {
+            if($rootScope.offset > 0) {
+                $rootScope.offset -= 10;
+            }
+            construct();
+        };
+
+        $rootScope.goForward = function () {
+            $rootScope.offset += 10;
+            construct();
+        };
+
         construct();
 
         function construct() {
-            Post.list().then(function(data) { vm.posts = data.reverse(); });
+            Post.list({
+                limit: 10,
+                skip: $rootScope.offset
+            }).then(function(data) {
+                $rootScope.dataLength = data.lenght;
+                vm.posts = data.reverse();
+            });
         }
 
         function getCategories() {

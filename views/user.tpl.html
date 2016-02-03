@@ -25,8 +25,15 @@
         </md-content>
     </md-sidenav>
     <section layout="column" flex>
-        <md-toolbar class="md-whiteframe-glow-z1">
+        <md-toolbar layout="row" layout-align="center center" class="md-whiteframe-glow-z1">
             <h1 class="md-toolbar-tools">{{title}}</h1>
+            <span flex></span>
+            <md-button ng-disabled="offset === 0" ng-click="goBack()" class="md-icon-button" aria-label="Back">
+                <md-icon md-svg-icon="img/icons/back.svg"></md-icon>
+            </md-button>
+            <md-button ng-disabled="dataLength < 10" ng-click="goForward()" class="md-icon-button" aria-label="Forward">
+                <md-icon md-svg-icon="img/icons/forward.svg"></md-icon>
+            </md-button>
         </md-toolbar>
         <md-progress-linear md-mode="indeterminate" ng-show="loading"></md-progress-linear>
         <md-content flex ui-view md-scroll-y ng-view>

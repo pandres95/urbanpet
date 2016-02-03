@@ -8,10 +8,11 @@
 
     function Ad($http, Upload, api) {
 
-        this.list = function () {
+        this.list = function (params) {
             return $http({
                 method: 'GET',
-                url: api.ad
+                url: api.ad,
+                params: params
             }).then(function (res) {
                 return res.data.data;
             });

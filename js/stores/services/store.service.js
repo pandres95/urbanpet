@@ -6,12 +6,13 @@
         .service('Store', Store)
     );
 
-    function Store($http, headers, api) {
+    function Store($http, Upload, headers, api) {
 
-        this.list = function () {
+        this.list = function (params) {
             return $http({
                 method: 'GET',
-                url: api.store
+                url: api.store,
+                params: params
             }).then(function (res) {
                 return res.data.data;
             });
@@ -73,6 +74,18 @@
                 url: api.storeId(id),
                 headers: {
                     'Content-Type': headers.json
+                }
+            }).then(function (res) {
+                return res.data.data;
+            });
+        };
+
+        this.uploadImage = function (id, image) {
+            return Upload.upload({
+                method: 'PUT',
+                url: api.uploadStore(id),
+                data: {
+                    file: image
                 }
             }).then(function (res) {
                 return res.data.data;

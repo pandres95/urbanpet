@@ -9,10 +9,30 @@
     function AdController($rootScope, $mdDialog, Ad) {
         var vm = this;
 
+        $rootScope.offset = 0;
+
+        $rootScope.goBack = function () {
+            if($rootScope.offset > 0) {
+                $rootScope.offset -= 10;
+            }
+            construct();
+        };
+
+        $rootScope.goForward = function () {
+            $rootScope.offset += 10;
+            construct();
+        };
+
         construct();
 
         function construct() {
-            Ad.list().then(function(data) { vm.ads = data.reverse(); });
+            Ad.list({
+                limit: 10,
+                skip: $rootScope.offset
+            }).then(function(data) {
+                $rootScope.dataLength = data.lenght;
+                vm.ads = data.reverse();
+            });
         }
 
         vm.addAd = function($event) {

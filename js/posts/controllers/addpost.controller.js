@@ -32,6 +32,11 @@
                         .hideDelay(3000)
                     );
                     $mdDialog.hide();
+                }).then(function (post) {
+                    var postId = post._id;
+                    if($scope.file){
+                        return Post.uploadImage(postId, $scope.file);
+                    }
                 });
             } else {
                 $mdToast.show($mdToast

@@ -42,7 +42,14 @@
                 store.categories = store.categories.map(function (category) {
                     return category._id;
                 });
-                Store.update(storeId, store).then(function(){
+                store.categories = [ $scope.category ].concat(
+                    _(store.categories).difference([ $scope.category ])
+                );
+                Store.update(storeId, store).then(function (){
+                    if($scope.file){
+                        return Store.uploadImage(storeId, $scope.file);
+                    }
+                }).then(function(){
                     $mdToast.show($mdToast
                         .simple()
                         .content('Tienda actualizada exitosamente')
@@ -72,6 +79,14 @@
 
         function construct(){
             Store.find(storeId).then(function (store) {
+                $scope.type = (
+                    !store.isStore && !store.isService && 'venue'
+                ) || (
+                     store.isStore && !store.isService && 'store'
+                ) || (
+                    !store.isStore &&  store.isService && 'service'
+                );
+                $scope.category = store.categories[0];
                 store.categories = _(store.categories).map(
                     $scope.transformChip
                 );

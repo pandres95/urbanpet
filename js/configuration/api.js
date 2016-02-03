@@ -24,9 +24,11 @@
         // Store
         store: apiRouter.route('venues'),
         storeId: apiRouter.id('venues'),
+        uploadStore: apiRouter.id('upload/venue'),
         // Category
         category: apiRouter.route('categories'),
         categoryId: apiRouter.id('categories'),
+        uploadCategory: apiRouter.id('upload/category'),
         // Auth
         token: apiRouter.route('auth/token'),
         // Ad
@@ -38,6 +40,7 @@
         // Post
         post: apiRouter.route('posts'),
         postId: apiRouter.id('posts'),
+        uploadPost: apiRouter.id('upload/post'),
         // Product
         product: apiRouter.route('products'),
         productId: apiRouter.id('products')

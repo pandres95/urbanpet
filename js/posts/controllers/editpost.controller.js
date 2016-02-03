@@ -11,31 +11,16 @@
     ) {
         var vmd = this;
 
-        $scope.selectedItem = null;
-        $scope.searchText = null;
-        $scope.categories = categories;
-
-        $scope.transformChip = function(chip) {
-            if(angular.isObject(chip)){
-                return chip;
+        $scope.states = [
+            {
+                id: 'draft',
+                name: 'Borrador'
+            },
+            {
+                id: 'published',
+                name: 'Publicado'
             }
-            return _($scope.categories).findWhere({ _id: chip });
-        };
-
-        $scope.querySearch = function (query) {
-            var results = (query ?
-                $scope.categories.filter($scope.createFilterFor(query)) :
-                []
-            );
-            return results;
-        };
-
-        $scope.createFilterFor = function (query) {
-            var lowercaseQuery = angular.lowercase(query);
-            return function filterFn(category) {
-                return (category._lowername.indexOf(lowercaseQuery) !== -1);
-            };
-        };
+        ];
 
         $scope.managePost = function(post){
             if(post.title && post.description){
@@ -47,6 +32,10 @@
                         .hideDelay(3000)
                     );
                     $mdDialog.hide();
+                }).then(function () {
+                    if($scope.file){
+                        return Post.uploadImage(postId, $scope.file);
+                    }
                 });
             } else {
                 $mdToast.show($mdToast
@@ -69,9 +58,6 @@
 
         function construct(){
             Post.find(postId).then(function (post) {
-                post.categories = _(post.categories).map(
-                    $scope.transformChip
-                );
                 $scope.post = post;
             });
         }

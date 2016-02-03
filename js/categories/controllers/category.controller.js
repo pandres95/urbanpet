@@ -9,8 +9,28 @@
     function CategoryController($rootScope, $mdDialog, Category) {
         var vm = this;
 
+        $rootScope.offset = 0;
+
+        $rootScope.goBack = function () {
+            if($rootScope.offset > 0) {
+                $rootScope.offset -= 10;
+            }
+            construct();
+        };
+
+        $rootScope.goForward = function () {
+            $rootScope.offset += 10;
+            construct();
+        };
+
         function construct() {
-            Category.list().then(function(data) { vm.categories = data; });
+            Category.list({
+                limit: 10,
+                skip: $rootScope.offset
+            }).then(function(data) {
+                $rootScope.dataLength = data.lenght;
+                vm.categories = data.reverse();
+            });
         }
 
         vm.addCategory = function ($event) {

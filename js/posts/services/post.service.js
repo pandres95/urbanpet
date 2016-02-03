@@ -6,12 +6,13 @@
         .service('Post', Post)
     );
 
-    function Post($http, headers, api) {
+    function Post($http, Upload, headers, api) {
 
-        this.list = function () {
+        this.list = function (params) {
             return $http({
                 method: 'GET',
-                url: api.post
+                url: api.post,
+                params: params
             }).then(function (res) {
                 return res.data.data;
             });
@@ -58,6 +59,18 @@
                 url: api.postId(id),
                 headers: {
                     'Content-Type': headers.json
+                }
+            }).then(function (res) {
+                return res.data.data;
+            });
+        };
+
+        this.uploadImage = function (id, image) {
+            return Upload.upload({
+                method: 'PUT',
+                url: api.uploadPost(id),
+                data: {
+                    file: image
                 }
             }).then(function (res) {
                 return res.data.data;

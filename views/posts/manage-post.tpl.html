@@ -29,12 +29,25 @@
                         </md-option>
                     </md-select>
                 </md-input-container>
+                <img ng-if="file" style="max-width: 100%" ngf-thumbnail="file || '/thumb.jpg'">
+                <img ng-if="image" style="max-width: 100%" ng-src="{{image | image}}" >
+                <md-input-container>
+                    <md-button ngf-drop name="file" ngf-select ng-model="file" ngf-multiple="false" ngf-pattern="'image/*'">
+                        Escoger imagen
+                    </md-button>
+                </md-input-container>
                 <md-input-container class="md-block">
                     <label>Contenido</label>
                     <textarea ng-model="post.content" rows="8" cols="40" column></textarea>
                 </md-input-container>
+                <md-input-container>
+                    <md-button class="md-icon-button" href="https://daringfireball.net/projects/markdown/">
+                        <md-icon md-svg-src="img/icons/markdown.svg"></md-icon>
+                    </md-button>
+                    Este editor utiliza Markdown. Presiona el botón para aprender cómo se usa.
+                </md-input-container>
                 <h4>Previsualización</h4>
-                <div btf-markdown="post.content" class="md-block">
+                <div style="max-width: 100%" btf-markdown="post.content" class="md-block">
                 </div>
 
                 <center>

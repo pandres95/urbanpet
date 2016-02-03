@@ -11,10 +11,30 @@
     ) {
         var vm = this;
 
+        $rootScope.offset = 0;
+
+        $rootScope.goBack = function () {
+            if($rootScope.offset > 0) {
+                $rootScope.offset -= 10;
+            }
+            construct();
+        };
+
+        $rootScope.goForward = function () {
+            $rootScope.offset += 10;
+            construct();
+        };
+
         construct();
 
         function construct() {
-            Store.list().then(function(data) { vm.stores = data.reverse(); });
+            Store.list({
+                limit: 10,
+                skip: $rootScope.offset
+            }).then(function(data) {
+                $rootScope.dataLength = data.lenght;
+                vm.stores = data.reverse();
+            });
         }
 
         function getCategories() {

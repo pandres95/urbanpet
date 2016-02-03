@@ -23,6 +23,21 @@
                     <textarea ng-model="category.name"></textarea>
                 </md-input-container>
 
+                <md-input-container>
+                    <md-radio-group ng-model="type">
+                      <md-radio-button value="venue">Lugar</md-radio-button>
+                      <md-radio-button value="product">Producto</md-radio-button>
+                    </md-radio-group>
+                </md-input-container>
+
+                <md-input-container ng-if="type === 'venue'">
+                    <img ng-if="file" style="max-width: 100%" ngf-thumbnail="file || '/thumb.jpg'">
+                    <img ng-if="!file && category.image" style="max-width: 100%" ng-src="{{category.image | image}}" >
+                    <md-button ngf-drop name="file" ngf-select ng-model="file" ngf-multiple="false" ngf-pattern="'image/*'">
+                        Escoger imagen del puntero
+                    </md-button>
+                </md-input-container>
+
                 <center>
                     <md-button type="submit" class="md-fab md-secondary">
                         <md-icon md-svg-src="img/icons/send.svg" aria-label="send"></md-icon>

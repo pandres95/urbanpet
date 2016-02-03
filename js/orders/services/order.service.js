@@ -8,10 +8,11 @@
 
     function Order($http, api, headers) {
 
-        this.list = function () {
+        this.list = function (params) {
             return $http({
                 method: 'GET',
-                url: api.order
+                url: api.order,
+                params: params
             }).then(function (res) {
                 return res.data.data;
             });
