@@ -8,7 +8,7 @@
         },
         route: function(path){
             var url = this.url;
-            return '{0}://{1}/{2}'.format(url.procotol, url.host, path);
+            return '{0}://{1}/{2}'.format(url.protocol, url.host, path);
         },
         id: function(path){
             var prePath = apiRouter.route(path);
