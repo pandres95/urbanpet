@@ -38,7 +38,7 @@
         }
 
         function getCategories() {
-            return Category.list().then(function (categories) {
+            return Category.ilist().then(function (categories) {
                 return categories.map(function (category) {
                     category._lowername = category.name.toLowerCase();
                     return category;

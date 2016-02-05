@@ -6,7 +6,7 @@
         .service('Category', Category)
     );
 
-    function Category($http, Upload, headers, api) {
+    function Category(_, $http, Upload, headers, api) {
 
         this.list = function (params) {
             return $http({
@@ -16,6 +16,12 @@
             }).then(function (res) {
                 return res.data.data;
             });
+        };
+
+        this.ilist = function (params, isProduct) {
+            return this.list(_.extend({
+                isProduct: isProduct || false
+            }, params || {}));
         };
 
         this.find = function (id) {

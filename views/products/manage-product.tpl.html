@@ -1,0 +1,62 @@
+<md-dialog ng-cloak style="max-width:800px; width:85%;">
+    <form name="manageProductForm" ng-submit="manageProduct(product)">
+        <md-toolbar>
+            <div ng-switch on="edit" class="md-toolbar-tools">
+                <h2 ng-switch-when="true">Editar product: {{store.name}}</h2>
+                <h2 ng-switch-when="false">Agregar nuevo producto</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="img/icons/close.svg" aria-label="Cerrar diálogo"></md-icon>
+                </md-button>
+            </div>
+            <md-progress-linear md-mode="indeterminate" ng-show="loading"></md-progress-linear>
+        </md-toolbar>
+        <md-dialog-content layout-padding>
+            <div class="md-dialog-content">
+
+                <md-input-container class="md-block">
+                    <label>Nombre</label>
+                    <input ng-model="product.name">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Descripción</label>
+                    <textarea ng-model="product.description" columns="1" md-maxlength="150" rows="5"></textarea>
+                </md-input-container>
+                <md-input-container class="md-icon-float md-block">
+                    <label>Precio</label>
+                    <md-icon md-svg-src="img/icons/currency.svg"></md-icon>
+                    <input step="1" type="number" ng-model="product.unitPrice" />
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Categoría</label>
+                    <md-select ng-model="product.category">
+                        <md-option ng-value="item._id" ng-repeat="item in categories">{{item.name}}</md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-divider/>
+                <div layout-padding ng-repeat="detail in product.details">
+                    <md-input-container class="md-block">
+                        <input placeholder="Detalle" ng-model="detail.name" />
+                    </md-input-container>
+                    <md-chips class="md-block" ng-model="detail.options" placeholder="Agregar opciones" delete-button-label="Eliminar opción" delete-hint="Presione eliminar para remover opción" secondary-placeholder="+">
+                    </md-chips>
+                    <md-input-container class="md-block">
+                        <md-button ng-click="deleteDetail($event, detail)">
+                            Eliminar detalle
+                        </md-button>
+                    </md-input-container>
+                    <md-divider/>
+                </div>
+                <md-button ng-click="addDetail()">Agregar detalle</md-button>
+
+                <center>
+                    <md-button type="submit" class="md-fab md-secondary">
+                        <md-icon md-svg-src="img/icons/send.svg" aria-label="send"></md-icon>
+                    </md-button>
+                </center>
+            </div>
+        </md-dialog-content>
+    </form>
+</md-dialog>

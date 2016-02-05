@@ -3,23 +3,26 @@
 
     angular
     .module('urbanPet')
-    .service('msg', msg);
+    .service('msg', Msg);
 
-    function msg(messages, $mdToast) {
-        var position = 'top right';
+    function Msg(messages, $mdToast) {
+        var position = 'bottom left';
 
         this.success = function(message){
             this.show(
                 'Éxito',
-                messages.success[message] ? messages.success[message] : 'Realizado correctamente'
+                (messages.success[message] &&
+                    messages.success[message]
+                ) || 'Realizado correctamente'
             );
-
         };
 
         this.error = function(message){
             this.show(
                 'Error',
-                messages.error[message] ? messages.error[message] : 'Hubo un error en la aplicación'
+                (messages.error[message] &&
+                    messages.error[message]
+                ) || 'Hubo un error en la aplicación'
             );
         };
 
@@ -30,6 +33,6 @@
                 .position(position)
                 .hideDelay(3000)
             );
-        }
+        };
     }
 })();

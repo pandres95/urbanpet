@@ -4,10 +4,16 @@
         <p>{{item.description}}</p>
     </md-card-content>
     <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-if="item.isStore || item.isService" aria-label="products" ui-sref="user.products({id: '{{item._id}}'})">
+            <md-tooltip>Productos</md-tooltip>
+            <md-icon md-svg-icon="/img/icons/list.svg"></md-icon>
+        </md-button>
         <md-button ng-click="vm.editStore($event, item)" target="_blank" aria-label="link">
+            <md-tooltip>Editar</md-tooltip>
             <md-icon md-svg-icon="/img/icons/edit.svg"></md-icon>
         </md-button>
         <md-button ng-click="vm.removeStore($event, item._id)" target="_blank" aria-label="link">
+            <md-tooltip>Eliminar</md-tooltip>
             <md-icon md-svg-icon="/img/icons/trash.svg"></md-icon>
         </md-button>
     </md-card-actions>

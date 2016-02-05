@@ -6,8 +6,9 @@
             'ui.router', 'ngMaterial', 'ngUnderscore', 'ngFileUpload',
             'btford.markdown',
 
-            'urbanPet.ad', 'urbanPet.store', 'urbanPet.category',
-            'urbanPet.auth', 'urbanPet.order', 'urbanPet.post'
+            'urbanPet.ad', 'urbanPet.store', 'urbanPet.product',
+            'urbanPet.category', 'urbanPet.auth', 'urbanPet.order',
+            'urbanPet.post'
         ])
         .config(Config)
         .run(Run)
@@ -51,9 +52,9 @@
             templateUrl: 'views/stores/store.tpl.html'
         })
         .state('user.products', {
-            url:'/stores/:id/products',
+            url:'/stores/:id',
             controller: 'ProductController as vm',
-            templateUrl: 'views/stores/product.tpl.html'
+            templateUrl: 'views/products/product.tpl.html'
         })
         .state('user.posts', {
             url: '/posts',

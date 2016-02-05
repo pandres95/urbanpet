@@ -38,6 +38,28 @@
         };
 
         $scope.manageStore = function(store){
+            switch($scope.type){
+                case 'venue': {
+                    store.isStore = false;
+                    store.isService = false;
+                    break;
+                }
+                case 'store': {
+                    store.isStore = true;
+                    store.isService = false;
+                    break;
+                }
+                case 'service': {
+                    store.isStore = false;
+                    store.isService = true;
+                    break;
+                }
+                default: {
+                    store.isStore = false;
+                    store.isService = false;
+                    break;
+                }
+            }
             if(store.name && store.description){
                 store.categories = store.categories.map(function (category) {
                     return category._id;

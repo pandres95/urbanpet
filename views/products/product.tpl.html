@@ -1,0 +1,49 @@
+<md-card ng-repeat="product in vm.products">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">
+                {{product.name}}
+            </span>
+            <span class="md-subhead">
+                {{product.category}}
+            </span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+        <div>
+            <span class="md-body-2">Descripción </span>
+            <span class="md-caption">{{product.description}}</span>
+        </div>
+        <div>
+            <span class="md-body-2">Precio Unitario </span>
+            <span class="md-caption">{{product.unitPrice | currency}}</span>
+        </div>
+
+        <md-list ng-repeat="detail in product.details">
+            <md-list-item class="md-2-line">
+                <div class="md-list-item-text" layout="column">
+                    <h3>{{detail.name}}</h3>
+                    <p>
+                        <span ng-repeat="detailName in detail.options" class="md-caption">
+                            {{detailName}}{{$last ? '' : ', '}}
+                        </span>
+                    </p>
+                </div>
+            </md-list-item>
+            <md-divider />
+        </md-list>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-click="vm.editProduct($event, product)" target="_blank" aria-label="link">
+            <md-tooltip>Editar</md-tooltip>
+            <md-icon md-svg-icon="/img/icons/edit.svg"></md-icon>
+        </md-button>
+        <md-button ng-click="vm.deleteProduct($event, product)" target="_blank" aria-label="link">
+            <md-tooltip>Eliminar</md-tooltip>
+            <md-icon md-svg-icon="/img/icons/trash.svg"></md-icon>
+        </md-button>
+    </md-card-actions>
+</md-card>
+<md-button class="md-fab md-warn" aria-label="Add" style="position: fixed; bottom: 8px; right: 10px;" ng-click="vm.addProduct()">
+    <md-icon md-svg-src="img/icons/plus.svg"></md-icon>
+</md-button>
