@@ -4,7 +4,7 @@
     var apiRouter = {
         url: {
             protocol: 'https',
-            host: 'urbanpet.herokuapp.com'
+            host: 'api.somosurbanpet.com'
         },
         route: function(path){
             var url = this.url;

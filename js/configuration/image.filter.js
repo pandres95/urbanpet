@@ -2,7 +2,7 @@
 
     angular
         .module('urbanPet')
-        .value('imgUrlBase', 'https://urbanpet.herokuapp.com/static')
+        .value('imgUrlBase', 'https://api.somosurbanpet.com/static')
         .filter('image', image);
 
     function image(imgUrlBase) {
